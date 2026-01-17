@@ -3,11 +3,12 @@ export default {
     const url = new URL(request.url);
 
     if (
-      url.hostname === "shopsummercamp.com" ||
-      url.hostname === "www.shopsummercamp.com"
+      (url.hostname === "shopsummercamp.com" ||
+       url.hostname === "www.shopsummercamp.com") &&
+      url.pathname.endsWith(".html")
     ) {
       return Response.redirect(
-        "https://hotelx.com.au" + url.pathname + url.search,
+        `https://hotelx.com.au${url.pathname}`,
         301
       );
     }
